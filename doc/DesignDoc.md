@@ -14,7 +14,7 @@ Sketches:
 ================
 Below are sketches to give an impression of what the application looks like and how it works.
 
-![alt tag](https://github.com/jeroen365/EvilHangman/blob/master/EvilHangmanWireframes.jpg)
+![alt tag](https://github.com/jeroen365/EvilHangman/blob/master/doc/EvilHangmanWireframes.jpg)
 
 Frameworks:
 ================
