@@ -18,4 +18,4 @@ Below are sketches to give an impression of what the application looks like and 
 
 Frameworks:
 ================
-The only frameworks used will be the frameworks standard included in the Utility Application upon which the Hangman application is build. These are the follwing: Foundation framework, CoreGraphics framework, UIKIT framework and XCTest framework. No additional APIs will be used.
+The frameworks used will be the frameworks standard included in the Utility Application upon which the Hangman application is build. These are the follwing: Foundation framework, CoreGraphics framework, UIKIT framework and XCTest framework. Saving user preferences will be done with the NSUserDefault API.
