@@ -10,11 +10,22 @@
 
 @implementation GameFunctions
 
-
+int wordLength;
 NSMutableArray *words;
     
-    
+- (NSString*)initializeAmountOfGuesses{
+    NSUserDefaults *Settings = [NSUserDefaults standardUserDefaults];
+    int amountOfGuesses = (int)[Settings integerForKey:@"AmountOfGuesses"];
+    NSString *amountOfGuessesString = [NSString stringWithFormat:@"Guesses left: %i", amountOfGuesses];
+    return amountOfGuessesString;
+}
 
+- (NSString*)initializeWordLength {
+    NSUserDefaults *Settings = [NSUserDefaults standardUserDefaults];
+    int wordLength = (int)[Settings integerForKey:@"WordLength"];
+    NSString *placeholders = [@"-" stringByPaddingToLength:wordLength withString:@"-" startingAtIndex:0];
+    return placeholders;
+}
 - (NSMutableArray*) loadDictionary {
     // Load dictionary
     NSString *path = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
@@ -36,8 +47,6 @@ NSMutableArray *words;
     }];
     return words;
 }
-
-
 
 
 

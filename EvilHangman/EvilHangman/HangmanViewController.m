@@ -37,31 +37,20 @@ NSNumber *amountOfGuesses;
 
 
 - (void) setup{
-    
-    NSUserDefaults *Settings = [NSUserDefaults standardUserDefaults];
-    
+
     [typeField becomeFirstResponder];
-    
-    
+
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     //Initialize Amount of Guesses at start up
-    int amountOfGuesses = (int)[Settings integerForKey:@"AmountOfGuesses"];
-    NSString *amountOfGuessesString = [NSString stringWithFormat:@"Guesses left: %i", amountOfGuesses];
-    amountOfGuessesLeftLabel.text = amountOfGuessesString;
+    amountOfGuessesLeftLabel.text = [gameFunctions initializeAmountOfGuesses];
     guessesProgressBar.progress = 1.0f;
     
-    
     // Initialize label (placeholder) with hyphens (length as saved in NSUserDefaults)
-    int wordLength = (int)[Settings integerForKey:@"WordLength"];
-    NSString *placeholders = [@"-" stringByPaddingToLength:wordLength withString:@"-" startingAtIndex:0];
-    placeHolderWord.text = placeholders;
+    placeHolderWord.text = [gameFunctions initializeWordLength];
     
     win = NO;
     lose = NO;
-    
-    
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    
     
     // Give instructions for the game
     explainLabel.text = @"Enter a letter and press return to start playing";
@@ -178,8 +167,7 @@ NSNumber *amountOfGuesses;
     typeField.text = @"";
     return NO;
     
-    
-    return YES;
+
 }
 
 

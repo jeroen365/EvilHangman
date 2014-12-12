@@ -10,9 +10,15 @@
 
 @interface GameFunctions : NSObject
 
+- (NSString*)initializeAmountOfGuesses;
+
+- (NSString*)initializeWordLength;
 
 - (NSMutableArray*)narrowDownToWordLength;
 
 - (NSMutableArray*)loadDictionary;
 
+- (NSMutableDictionary*)orderWords:(NSString*)input;
+
+- (NSMutableArray*)largestEQClass:(NSMutableDictionary*)dictionary;
 @end
