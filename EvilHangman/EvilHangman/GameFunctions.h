@@ -11,10 +11,8 @@
 @interface GameFunctions : NSObject
 
 
-- (void)equivalenceClasses:(NSString*)placeHolderWordText andOther: (NSString*)typeFieldText;
+- (NSMutableArray*)narrowDownToWordLength;
 
-- (void)narrowDownToWordLength;
-
-- (void)loadDictionary;
+- (NSMutableArray*)loadDictionary;
 
 @end

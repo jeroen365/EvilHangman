@@ -87,12 +87,11 @@ NSNumber *amountOfGuesses;
     guessedLettersLabel.text = guessedLettersString;
     
     // Load dictionairy
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
-    words = [[NSMutableArray alloc] initWithContentsOfFile:path];
+    words = [gameFunctions loadDictionary];
     
     
     // Configure dictionary to preferences
-    [self narrowDownToWordLength];
+    words = [gameFunctions narrowDownToWordLength];
     
     
 }
@@ -107,18 +106,6 @@ NSNumber *amountOfGuesses;
     // Do any additional setup after loading the view.
     [self setup];
     
-}
-
-- (void)narrowDownToWordLength {
-    // Delete all words longer & shorter than set length from array
-    NSUserDefaults *Settings = [NSUserDefaults standardUserDefaults];
-    int wordLength = (int)[Settings integerForKey:@"WordLength"];
-    [words enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSString *word, NSUInteger index, BOOL *stop) {
-        if ([word length] != wordLength ) {
-            [words removeObjectAtIndex:index];
-        }
-        
-    }];
 }
 
 
@@ -205,76 +192,87 @@ NSNumber *amountOfGuesses;
 - (void)equivalenceClasses {
     // Set variables needed later
     NSString *input = [typeField.text uppercaseString];
-    NSMutableArray *indexSets = [[NSMutableArray alloc] init];
     NSMutableString *placeholders = [placeHolderWord.text mutableCopy];
     NSUserDefaults *Settings = [NSUserDefaults standardUserDefaults];
     int wordLength = (int)[Settings integerForKey:@"WordLength"];
-    
+    correct = NO;
     
     
     // Go over every word and create indexSet of letter appearences in word
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     for (NSString *word in words) {
-        NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
-        for (NSInteger letter = 0; letter < wordLength; letter++) {
+        
+        NSMutableArray *key = [[NSMutableArray alloc]init];
+        
+        for (int letter = 0; letter < wordLength; letter++) {
+            
             unichar character = [word characterAtIndex:letter];
+            
             if (character == [input characterAtIndex:0]) {
-                [indexSet addIndex: letter];
-                [viableWords addObject: word];
+                
+               [key addObject:[NSString stringWithFormat:@"%d",letter]];
             }
         }
-        // Add indexSet to array of indexSets.
-        [indexSets addObject:indexSet];
+        NSString *keyStr = [key componentsJoinedByString:@","];
+            
+        NSMutableArray *array = [dictionary objectForKey:keyStr];
+        if (array) {
+            [array addObject:word];
+        }
+        else {
+            array = [NSMutableArray array];
+            [array addObject:word];
+        }
         
+        [dictionary setObject:array forKey:keyStr];
+        //NSLog(@"%@", [dictionary objectForKey:keyStr]);
+    
     }
     
-    // Find most occurring set in array of sets (most occuring position of letter)
-    NSCountedSet *sets = [NSCountedSet setWithArray:indexSets];
-    //NSCountedSet *wordSetsCounted = [NSCountedSet setWithArray: wordSets];
-    NSMutableArray *occurrences = [NSMutableArray array];
-    for (NSIndexSet *set in sets) {
-        NSDictionary *setsDictionary = @{@"set":set, @"count":@([sets countForObject:set])};
-        [occurrences addObject:setsDictionary];
-    }
-    // Sort unique indexes by occurence, first index is most occuring.
-    NSArray *sortedIndexCount = [occurrences sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"count" ascending:NO]]];
-    // NSLog(@" hoi hoi %@", sortedIndexCount);
-    
-    NSIndexSet *locations = [sortedIndexCount[0] valueForKey:@"set"];
-    // NSLog(@"locations %@", locations);
-    
-    // If largest indexSet contains any indexes, add a letter to the view
-    if ([locations count] != 0 ) {
-        for (int j = 0; j < wordLength ; j++) {
-            if ([locations containsIndex:j]) {
-                NSRange range = NSMakeRange(j, 1);
-                [placeholders replaceCharactersInRange:range withString:input];
-                correct = YES;
+        // determine largest Equivalence Class
+        NSInteger max = 0;
+        NSString *largestEC = @"";
+        
+        for(NSString *key in dictionary){
+            NSInteger sizeEC = [[dictionary objectForKey:key] count];
+            if (sizeEC > max) {
+                max = sizeEC;
+                largestEC = key;
             }
         }
         
-    }
-    else {
+        words = [dictionary objectForKey:largestEC];
+    
+        for (NSString *word in words)
+        {
+            // Walk over lettter locations in word
+            for (int location = 0; location < wordLength; location++)
+            {
+                // Get letter for location
+                char tempChar = [word characterAtIndex: location];
+            
+                // Convert letter to string
+                NSString *temp = [NSString stringWithFormat:@"%c", tempChar];
+            
+                // Check if guessed letter is found
+                if ([temp isEqualToString:input])
+                {
+                    NSRange range = NSMakeRange(location, 1);
+                    [placeholders replaceCharactersInRange:range withString:input];
+                    correct = YES;
+                }
+            }
+        }
+    
+    if (correct == NO) {
         [self updateGuessesLeft];
-        correct = NO;
     }
     // Update label in view
     placeHolderWord.text = placeholders;
     
-    // Remove all impossible words from wordlist for efficiency.
-    NSMutableArray *wordsCopy = [words copy];
-    for (NSString *word in wordsCopy) {
-        NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
-        for (NSInteger letter = 0; letter < wordLength ; letter++) {
-            unichar character = [word characterAtIndex:letter];
-            if (character == [input characterAtIndex:0]) {
-                [indexSet addIndex: letter];
-            }
-        }
-        if ([indexSet isEqualToIndexSet:locations] == NO) {
-            [words removeObject:word];
-        }
-    }
 }
+
+
 
 
 - (void)updateGuessedLettersLabel {

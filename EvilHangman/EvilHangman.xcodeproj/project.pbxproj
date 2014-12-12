@@ -16,8 +16,8 @@
 		445BFDA61A1D2E6B000DF063 /* EvilHangmanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 445BFDA51A1D2E6B000DF063 /* EvilHangmanTests.m */; };
 		4481F2C81A2336D3006E4617 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4481F2C71A2336D3006E4617 /* SettingsViewController.m */; };
 		4481F2CB1A233BD3006E4617 /* HangmanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4481F2CA1A233BD3006E4617 /* HangmanViewController.m */; };
+		44BD2F311A3B92D2006E72B7 /* GameFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BD2F301A3B92D2006E72B7 /* GameFunctions.m */; };
 		44D409571A2F420000500682 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D409561A2F420000500682 /* words.plist */; };
-		44E7431F1A3893EB00C84B9A /* GameFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E7431E1A3893EB00C84B9A /* GameFunctions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +48,9 @@
 		4481F2C71A2336D3006E4617 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4481F2C91A233BD3006E4617 /* HangmanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangmanViewController.h; sourceTree = "<group>"; };
 		4481F2CA1A233BD3006E4617 /* HangmanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangmanViewController.m; sourceTree = "<group>"; };
+		44BD2F2F1A3B92D2006E72B7 /* GameFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameFunctions.h; sourceTree = "<group>"; };
+		44BD2F301A3B92D2006E72B7 /* GameFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameFunctions.m; sourceTree = "<group>"; };
 		44D409561A2F420000500682 /* words.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = words.plist; sourceTree = "<group>"; };
-		44E7431D1A3893EB00C84B9A /* GameFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameFunctions.h; sourceTree = "<group>"; };
-		44E7431E1A3893EB00C84B9A /* GameFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameFunctions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +96,8 @@
 				445BFD8E1A1D2E6B000DF063 /* AppDelegate.m */,
 				445BFD901A1D2E6B000DF063 /* ViewController.h */,
 				445BFD911A1D2E6B000DF063 /* ViewController.m */,
-				44E7431D1A3893EB00C84B9A /* GameFunctions.h */,
-				44E7431E1A3893EB00C84B9A /* GameFunctions.m */,
+				44BD2F2F1A3B92D2006E72B7 /* GameFunctions.h */,
+				44BD2F301A3B92D2006E72B7 /* GameFunctions.m */,
 				4481F2C91A233BD3006E4617 /* HangmanViewController.h */,
 				4481F2CA1A233BD3006E4617 /* HangmanViewController.m */,
 				445BFD931A1D2E6B000DF063 /* Main.storyboard */,
@@ -240,7 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4481F2CB1A233BD3006E4617 /* HangmanViewController.m in Sources */,
-				44E7431F1A3893EB00C84B9A /* GameFunctions.m in Sources */,
+				44BD2F311A3B92D2006E72B7 /* GameFunctions.m in Sources */,
 				445BFD921A1D2E6B000DF063 /* ViewController.m in Sources */,
 				445BFD8F1A1D2E6B000DF063 /* AppDelegate.m in Sources */,
 				445BFD8C1A1D2E6B000DF063 /* main.m in Sources */,
