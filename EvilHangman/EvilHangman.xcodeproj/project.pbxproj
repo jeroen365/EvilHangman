@@ -14,6 +14,10 @@
 		445BFD971A1D2E6B000DF063 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445BFD961A1D2E6B000DF063 /* Images.xcassets */; };
 		445BFD9A1A1D2E6B000DF063 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 445BFD981A1D2E6B000DF063 /* LaunchScreen.xib */; };
 		445BFDA61A1D2E6B000DF063 /* EvilHangmanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 445BFDA51A1D2E6B000DF063 /* EvilHangmanTests.m */; };
+		4481F2C81A2336D3006E4617 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4481F2C71A2336D3006E4617 /* SettingsViewController.m */; };
+		4481F2CB1A233BD3006E4617 /* HangmanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4481F2CA1A233BD3006E4617 /* HangmanViewController.m */; };
+		44D409571A2F420000500682 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D409561A2F420000500682 /* words.plist */; };
+		44E7431F1A3893EB00C84B9A /* GameFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E7431E1A3893EB00C84B9A /* GameFunctions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,13 @@
 		445BFD9F1A1D2E6B000DF063 /* EvilHangmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EvilHangmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		445BFDA41A1D2E6B000DF063 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		445BFDA51A1D2E6B000DF063 /* EvilHangmanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EvilHangmanTests.m; sourceTree = "<group>"; };
+		4481F2C61A2336D3006E4617 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		4481F2C71A2336D3006E4617 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4481F2C91A233BD3006E4617 /* HangmanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangmanViewController.h; sourceTree = "<group>"; };
+		4481F2CA1A233BD3006E4617 /* HangmanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangmanViewController.m; sourceTree = "<group>"; };
+		44D409561A2F420000500682 /* words.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = words.plist; sourceTree = "<group>"; };
+		44E7431D1A3893EB00C84B9A /* GameFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameFunctions.h; sourceTree = "<group>"; };
+		44E7431E1A3893EB00C84B9A /* GameFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameFunctions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +96,13 @@
 				445BFD8E1A1D2E6B000DF063 /* AppDelegate.m */,
 				445BFD901A1D2E6B000DF063 /* ViewController.h */,
 				445BFD911A1D2E6B000DF063 /* ViewController.m */,
+				44E7431D1A3893EB00C84B9A /* GameFunctions.h */,
+				44E7431E1A3893EB00C84B9A /* GameFunctions.m */,
+				4481F2C91A233BD3006E4617 /* HangmanViewController.h */,
+				4481F2CA1A233BD3006E4617 /* HangmanViewController.m */,
 				445BFD931A1D2E6B000DF063 /* Main.storyboard */,
+				4481F2C61A2336D3006E4617 /* SettingsViewController.h */,
+				4481F2C71A2336D3006E4617 /* SettingsViewController.m */,
 				445BFD961A1D2E6B000DF063 /* Images.xcassets */,
 				445BFD981A1D2E6B000DF063 /* LaunchScreen.xib */,
 				445BFD891A1D2E6B000DF063 /* Supporting Files */,
@@ -97,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				445BFD8A1A1D2E6B000DF063 /* Info.plist */,
+				44D409561A2F420000500682 /* words.plist */,
 				445BFD8B1A1D2E6B000DF063 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -168,6 +186,7 @@
 				TargetAttributes = {
 					445BFD851A1D2E6B000DF063 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = DV6MACWMG2;
 					};
 					445BFD9E1A1D2E6B000DF063 = {
 						CreatedOnToolsVersion = 6.1;
@@ -199,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D409571A2F420000500682 /* words.plist in Resources */,
 				445BFD951A1D2E6B000DF063 /* Main.storyboard in Resources */,
 				445BFD9A1A1D2E6B000DF063 /* LaunchScreen.xib in Resources */,
 				445BFD971A1D2E6B000DF063 /* Images.xcassets in Resources */,
@@ -219,9 +239,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4481F2CB1A233BD3006E4617 /* HangmanViewController.m in Sources */,
+				44E7431F1A3893EB00C84B9A /* GameFunctions.m in Sources */,
 				445BFD921A1D2E6B000DF063 /* ViewController.m in Sources */,
 				445BFD8F1A1D2E6B000DF063 /* AppDelegate.m in Sources */,
 				445BFD8C1A1D2E6B000DF063 /* main.m in Sources */,
+				4481F2C81A2336D3006E4617 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,9 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EvilHangman/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -353,9 +380,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EvilHangman/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -412,6 +443,7 @@
 				445BFDAB1A1D2E6B000DF063 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		445BFDAC1A1D2E6B000DF063 /* Build configuration list for PBXNativeTarget "EvilHangmanTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +452,7 @@
 				445BFDAE1A1D2E6B000DF063 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
