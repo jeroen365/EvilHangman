@@ -217,19 +217,19 @@ NSNumber *amountOfGuesses;
     
     }
     
-        // Determine largest Equivalence Class
-        NSInteger max = 0;
-        NSString *largestEC = @"";
+    // Determine largest Equivalence Class
+    NSInteger max = 0;
+    NSString *largestEC = @"";
         
-        for(NSString *key in dictionary){
-            NSInteger sizeEC = [[dictionary objectForKey:key] count];
-            if (sizeEC > max) {
-                max = sizeEC;
-                largestEC = key;
-            }
+    for(NSString *key in dictionary){
+        NSInteger sizeEC = [[dictionary objectForKey:key] count];
+        if (sizeEC > max) {
+            max = sizeEC;
+            largestEC = key;
         }
-        // Use largest wordset as words
-        words = [dictionary objectForKey:largestEC];
+    }
+    // Use largest wordset as words
+    words = [dictionary objectForKey:largestEC];
     
     // Go over every word and check the index to update the placeholder
     for (NSString *word in words){
