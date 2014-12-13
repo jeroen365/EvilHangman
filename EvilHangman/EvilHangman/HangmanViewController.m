@@ -186,7 +186,7 @@ NSNumber *amountOfGuesses;
     correct = NO;
     
     
-    // Go over every word and create indexSet of letter appearences in word
+    // Go over every word and create keys of letter appearences in word
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     for (NSString *word in words) {
         
@@ -201,23 +201,23 @@ NSNumber *amountOfGuesses;
                [key addObject:[NSString stringWithFormat:@"%d",letter]];
             }
         }
-        NSString *keyStr = [key componentsJoinedByString:@","];
+        //
+        NSString *keyString = [key componentsJoinedByString:@","];
             
-        NSMutableArray *array = [dictionary objectForKey:keyStr];
-        if (array) {
-            [array addObject:word];
+        NSMutableArray *wordsForKey = [dictionary objectForKey:keyString];
+        if (wordsForKey) {
+            [wordsForKey addObject:word];
         }
         else {
-            array = [NSMutableArray array];
-            [array addObject:word];
+            wordsForKey = [NSMutableArray array];
+            [wordsForKey addObject:word];
         }
-        
-        [dictionary setObject:array forKey:keyStr];
-        //NSLog(@"%@", [dictionary objectForKey:keyStr]);
+        // Add words with same key to dictionary
+        [dictionary setObject:wordsForKey forKey:keyString];
     
     }
     
-        // determine largest Equivalence Class
+        // Determine largest Equivalence Class
         NSInteger max = 0;
         NSString *largestEC = @"";
         
@@ -228,29 +228,23 @@ NSNumber *amountOfGuesses;
                 largestEC = key;
             }
         }
-        
+        // Use largest wordset as words
         words = [dictionary objectForKey:largestEC];
     
-        for (NSString *word in words)
-        {
-            // Walk over lettter locations in word
-            for (int location = 0; location < wordLength; location++)
-            {
-                // Get letter for location
-                char tempChar = [word characterAtIndex: location];
+    // Go over every word and check the index to update the placeholder
+    for (NSString *word in words){
+
+        for (int location = 0; location < wordLength; location++){
             
-                // Convert letter to string
-                NSString *temp = [NSString stringWithFormat:@"%c", tempChar];
-            
-                // Check if guessed letter is found
-                if ([temp isEqualToString:input])
-                {
-                    NSRange range = NSMakeRange(location, 1);
-                    [placeholders replaceCharactersInRange:range withString:input];
-                    correct = YES;
-                }
+            unichar character = [word characterAtIndex:location];
+                
+            if (character == [input characterAtIndex:0]) {
+                NSRange range = NSMakeRange(location, 1);
+                [placeholders replaceCharactersInRange:range withString:input];
+                correct = YES;
             }
         }
+    }
     
     if (correct == NO) {
         [self updateGuessesLeft];
